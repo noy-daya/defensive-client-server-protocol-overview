@@ -19,7 +19,9 @@
 ## 📖 Table of Contents
 
 - [Overview](#overview)
-- [End-to-End Protocol Execution](#end-to-end-protocol-execution-successful-session)
+- [System Demo (End-to-End Execution)](#system-demo-end-to-end-execution)
+- [Setup & Build Process](#setup--build-process)
+- [Client Runtime Execution](#client-runtime-execution)
 - [Technology Stack](#technology-stack)
 - [High-Level System Architecture](#high-level-system-architecture)
 - [Architectural Principles](#architectural-principles)
@@ -27,12 +29,12 @@
 - [Reliability & Fault Tolerance](#reliability--fault-tolerance)
 - [Client Architecture](#client-architecture)
 - [Server Architecture](#server-architecture)
-- [Cryptographic Design](#cryptographic-design-high-level)
+- [Cryptographic Design (High-Level)](#cryptographic-design-high-level)
 - [System Capabilities](#system-capabilities)
 - [Engineering Challenges](#engineering-challenges)
-- [Reliability Model](#reliability-model)
 - [Key Learnings](#key-learnings)
 - [Credits](#credits)
+  
 ---
 
 ## Overview
@@ -52,26 +54,58 @@ The system is designed to ensure **correctness, isolation, and resilience under 
 
 ---
 
-## End-to-End Protocol Execution (Successful Session)
+## System Demo (End-to-End Execution)
 
-This recording demonstrates a full successful execution of the system protocol from start to finish.
+This section demonstrates a full successful execution of the system protocol from start to finish.
 
-The system runs in real-time with both server and client terminals displayed simultaneously, showing the complete lifecycle of a secure file transfer session.
+The recording shows both server and client terminals running in parallel and captures the complete lifecycle of a secure session.
 
 ### Observed Flow
 
-- Server starts and enters listening state
-- Client process is launched (`client.exe`)
-- TCP connection is established automatically
-- Protocol handshake and identity phase are executed
-- Cryptographic session setup is performed
-- File transfer phase is completed successfully
-- Integrity validation (CRC) passes
-- Session terminates normally with success state
+- Server initialization and listening state
+- Client execution (`client.exe`)
+- TCP connection establishment
+- Secure handshake and identity verification
+- Cryptographic session setup
+- Encrypted file transfer
+- Integrity validation (CRC)
+- Successful termination
 
-![Full Protocol Execution](docs/gifs/full_protocol_success.gif)
+### Full Protocol Execution
 
-> This is a real execution trace of the system. No steps are simulated or pre-rendered.
+![Full Protocol Execution](assets/live_demo.gif)
+
+This recording represents a complete and successful end-to-end protocol lifecycle between client and server, including all security and validation stages.
+
+---
+
+## Setup & Build Process
+
+This section demonstrates system setup, dependency preparation, and build process for both client and server components.
+
+### Setup Flow
+- Environment preparation
+- Dependency installation
+- Client build using CMake
+- Runtime installation into isolated directories
+
+### Setup Demo
+![Setup Process](assets/setup.gif)
+
+---
+
+## Client Runtime Execution
+
+This section demonstrates how multiple isolated client instances operate concurrently.
+
+### Key Observations
+- Independent client runtimes
+- Separate configuration per instance
+- Concurrent execution in multiple terminals
+- Isolated file transfer environments
+
+### Runtime Demo
+![Client Runtime](assets/client-runtime.gif)
 
 ---
 
@@ -126,7 +160,7 @@ The system is structured into independent layers:
 * Processing / Service Layer
 * Persistence Layer
 * Cryptographic Layer
-* 
+
 Each layer is isolated and communicates through well-defined interfaces.
 
 ### 2. Separation of Concerns
@@ -180,15 +214,10 @@ participant S as Server
 
 C->>S: Connection Establishment
 S->>C: Session Initialization
-
 C->>S: Identity Exchange
 S->>C: Session Key Establishment
-
-C->>S: Encrypted File Transmission
-S->>C: Acknowledgement Response
-
-C->>S: Integrity Confirmation
-S->>S: Finalization & Storage Commit
+C->>S: Encrypted File Transfer
+S->>C: Acknowledgement
 ```
 
 ---
@@ -300,35 +329,22 @@ Integrity verification mechanisms for data correctness
 ---
 
 ## Engineering Challenges
-* Designing a structured distributed system from scratch
-* Handling TCP stream-based communication safely
-* Managing concurrency in an event-driven server
-* Ensuring deterministic execution in a stateful client
-* Designing layered architecture with strict separation
-* Implementing robust failure recovery strategies
-* Maintaining data integrity under unreliable conditions
-
----
-
-## Reliability Model
-The system follows a **validation-first and fail-safe** design approach:
-
-* Every request is validated before processing
-* Invalid or corrupted data is rejected immediately
-* Failures trigger controlled retry mechanisms
-* System avoids undefined states by design
+* Designing a full distributed system architecture
+* Safe TCP stream handling
+* Event-driven concurrency model
+* Deterministic client pipeline design
+* Layer isolation and modularity
+* Fault tolerance under unreliable networks
 
 ---
 
 ## Key Learnings
 
-* Distributed systems architecture
-* TCP-based network programming
-* Client–server protocol design (conceptual)
-* Secure system design principles
-* Concurrency and event-driven systems
-* Layered software architecture
-* Defensive programming methodologies
+* Distributed systems design
+* Secure communication protocols
+* Client–server architecture patterns
+* Concurrency models in servers
+* Defensive programming principles
 
 ---
 
