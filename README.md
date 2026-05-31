@@ -223,7 +223,7 @@ S->>C: Acknowledgement
 
 ---
 
-### Security Considerations
+## Security Considerations
 
 As part of the course requirements, the system was analyzed from a defensive security perspective.
 
