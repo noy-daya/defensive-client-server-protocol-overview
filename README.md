@@ -26,6 +26,7 @@
 - [High-Level System Architecture](#high-level-system-architecture)
 - [Architectural Principles](#architectural-principles)
 - [Secure Communication Model](#secure-communication-model)
+- [Security Considerations](#security-considerations)
 - [Reliability & Fault Tolerance](#reliability--fault-tolerance)
 - [Client Architecture](#client-architecture)
 - [Server Architecture](#server-architecture)
@@ -219,6 +220,23 @@ S->>C: Session Key Establishment
 C->>S: Encrypted File Transfer
 S->>C: Acknowledgement
 ```
+
+---
+
+### Security Considerations
+
+As part of the course requirements, the system was analyzed from a defensive security perspective.
+
+This analysis focuses on identifying **high-level risks derived from protocol design assumptions and system architecture**, including:
+
+- Trust assumptions between client and server
+- Exposure of metadata during communication
+- Replay and identity risks in session-based systems
+- Denial-of-Service surface in concurrent server design
+- Data-at-rest protection considerations
+- Responsibility boundaries between client and server
+
+📄 A more detailed security analysis is maintained separately as part of the academic deliverables.
 
 ---
 
