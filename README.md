@@ -73,7 +73,7 @@ The recording shows both server and client terminals running in parallel and cap
 
 ### Full Protocol Execution
 
-![Full Protocol Execution](assets/live_demo.gif)
+![Full Protocol Execution](assets/live-demo.gif)
 
 This recording represents a complete and successful end-to-end protocol lifecycle between client and server, including all security and validation stages.
 
